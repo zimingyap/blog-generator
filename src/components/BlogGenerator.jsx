@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './BlogGenerator.css';
 
+/**
+ * BlogGenerator Component
+ * 
+ * This component provides a user interface for generating blog posts using AI.
+ * Users can input a domain and target audience, and the application will generate
+ * topics, create an outline, write content, and polish it.
+ */
 const BlogGenerator = () => {
+  // State variables to manage user inputs and generated content
   const [domain, setDomain] = useState('');
   const [targetAudience, setTargetAudience] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -25,6 +33,13 @@ const BlogGenerator = () => {
     if (savedFinalContent) setFinalContent(savedFinalContent);
   }, []);
 
+  /**
+   * handleGenerate
+   * 
+   * Initiates the blog generation process by setting up a connection to the server
+   * using Server-Sent Events (SSE). It handles incoming messages to update the state
+   * with generated topics, outline, and content.
+   */
   const handleGenerate = async () => {
     // Reset state before generating new content
     setIsGenerating(true);
